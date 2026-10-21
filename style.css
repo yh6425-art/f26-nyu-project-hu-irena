@@ -8,3 +8,44 @@
 }
 
 /* START BELOW */
+/* ===== 全局 / Body ===== */
+body {
+  background-color: #F7B1B0;      /* 你的背景粉 */
+  color: #283618;                 /* 你的文字墨绿 */
+  font-family: 'Lora', serif;     /* 正文字体 */
+  font-size: 16px;                /* 你 type scale 的 Body */
+  line-height: 1.6;
+}
+
+/* ===== 标题 ===== */
+h1 {
+  font-family: 'Ephesis', cursive;  /* 你的 display 花体 */
+  font-size: 48px;                  /* Hero/Display */
+  color: #283618;
+}
+h2 {
+  font-family: 'Lora', serif;       /* 章节标题用 Lora,更好读 */
+  font-size: 24px;
+  color: #640D14;                   /* 你的 primary 酒红 */
+}
+
+/* ===== 每个 section:看得见边界 + 间距(8 的倍数)===== */
+header, section, footer {
+  padding: 24px;                    /* 8×3 */
+  margin-bottom: 16px;              /* 8×2 */
+  border: 1px solid #640D14;        /* 让每块边界可见 */
+}
+
+/* ===== 按钮 ===== */
+button {
+  background-color: #640D14;        /* primary 酒红 */
+  color: #FEEAC7;                   /* 奶油色字 */
+  border: none;
+  padding: 16px 24px;
+  font-family: 'Lora', serif;
+  font-size: 16px;
+}
+a {
+  color: #640D14;         /* 酒红,和品牌一致 */
+  text-decoration: none;  /* 去掉下划线 */
+}
