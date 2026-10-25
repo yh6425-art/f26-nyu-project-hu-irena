@@ -1,75 +1,53 @@
-## **Instructions**
+# A Second Pair of Eyes
 
-### **Step-by-Step: Getting Set Up**
+A mobile learning experience that helps young adults (18–30) build their own
+aesthetic judgment — learning to see and shape their personal style, one
+element at a time.
 
+## 🎨 Mockups
 
-**1\. Click the green "Use this template" button**
+Most up-to-date mockups (Figma): [View the mockups](https://www.figma.com/design/UeViHRMMMt485MUjagHG79/Irena_LandingPage?node-id=57-317&t=HFPB6aBDMUlaw7d4-1)
 
-This creates a brand new repository under your own GitHub account, pre-loaded with the starting files.
+## 📝 Weekly Update
 
-**2\. Name your repository**
+**Key changes this week**
+- Added a data-driven "Polka Dot — one element, five moods" section to the
+  landing page. Instead of hardcoding the style cards in HTML, I store them as
+  a JavaScript array and generate the HTML with a loop.
+- Styled the generated cards to match my Style Tile (cream cards, burgundy
+  script headings, Lora body, 8-px spacing) so they fit the rest of the page.
 
-Use this naming convention:
+**Challenges**
+- Script placement: at first I put the `<script>` in the `<head>`, so it ran
+  before the container existed and nothing appeared. Moving it to just before
+  `</body>` fixed it, because the DOM is fully loaded by then.
 
-`nyu-f26-lastname-firstname`
+**Questions**
+- Now that I can generate content from data, how do I make the interface
+  interactive — for example, making each mood card clickable so it opens that
+  look, or adding hover/tap feedback? I'd like to understand the right way to
+  add that behavior with JavaScript.
 
-**3\. Click "Create repository from template"**
+**Next week**
+- Add images to the cards: extend each data object with an image field (e.g. a
+  swatch for each mood) and render an `<img>` in the loop, so the cards show the
+  pattern/fabric, not just text.
 
-GitHub copies the files and takes you to your new repo page.
+## 🧩 This Assignment — Data & Dynamic Rendering
 
-**4\. Click the green "Code" button → "Create Codespace"**
+**What data I'm displaying**
+I'm showing the five style "moods" a single element (Polka Dot) can carry —
+the core idea of my project, "one element, many styles." Each item in my array
+is an object with two fields: `mood` (the style name) and `tagline` (a short
+line describing how that look reads — e.g. the dot size or a detail). I chose
+these two fields because, on this screen, the user needs to see *what* the
+style is and *why* it reads that way.
 
-**5\. Wait about 15 minutes while it boots up**
-
-This is normal. Codespaces is spinning up a virtual computer for you in the cloud, installing dependencies, and opening VS Code in your browser. Grab a sip of water while it loads.
-
-**6\. You're ready**
-
-When the browser tab opens to VS Code, open the `style.css` file in the file explorer on the left. The base styles are already written for you, and each rule has **STEP** comments showing where the grid properties go. That's your starting point — we'll type the grid code together in class, one step at a time.
-
----
-
-## **GitHub Codespaces — A Brief Guide**
-
-### **What Is It?**
-
-Codespaces is a development environment that runs entirely in your browser. Instead of installing software on your own computer, you get a virtual computer in the cloud — pre-configured and ready to code — that you access through a web browser. Microsoft (which owns GitHub) hosts it.
-
-### **What It Saves Us From**
-
-Normally, getting a development environment set up requires installing and configuring a bunch of tools:
-
-* A code editor (VS Code)  
-* A terminal (command line)  
-* Git (version control)  
-* Node.js, Python, or whatever runtime the project needs  
-* Extensions, themes, settings
-
-Each one of these can break in unique ways depending on your operating system, your computer's permissions, or just bad luck. **Codespaces eliminates all of that.** You click one button and you're in a fully working environment. No "it works on my machine" problems.
-
-### **How It Works (High Level)**
-
-1. A project lives in a GitHub repository.  
-2. You click the green **Code** button and select **Open with Codespaces**.  
-3. GitHub spins up a lightweight virtual machine running Linux, installs the project's dependencies automatically, and opens a browser-based version of VS Code.  
-4. You code, save, and commit just like you would on your local machine.  
-5. When you're done, you stop the Codespace. Next time you come back, everything is exactly where you left it.
-
-The environment is defined by a file called `devcontainer.json` (or `.devcontainer/`) in the repository. It's like a recipe that tells GitHub "this project needs X, Y, and Z."
-
-### **The Catch: It's Slow to Start (And Why)**
-
-A cold start takes **1–3 minutes**. Here's why:
-
-* **A new virtual machine has to boot.** Codespaces isn't "running" until you open it. There's no always-on computer — one is created for you on demand. That means spinning up an OS from scratch.  
-* **Your dependencies install.** If the project requires packages or libraries, Codespaces runs the install process when it starts. This is the same `npm install` or `pip install` you'd run locally — it just happens automatically.  
-* **Extensions and settings sync.** VS Code loads your extensions, themes, and preferences from your GitHub account.
-
-**Once it's running, it's fast.** The delay is only on the first launch of the day (or after you've manually stopped the Codespace). If you keep it open between sessions, there's no wait.
-
-### **Tips**
-
-* **Don't close your Codespace mid-session.** Just leave the tab open. If you close it, stop the Codespace from the GitHub dashboard so it doesn't eat into your monthly usage hours.  
-* **Your work is saved automatically.** Even if the Codespace stops, the files are stored on GitHub. You won't lose anything.  
-* **You get a fixed number of free hours per month** through the GitHub Student Developer Pack. A cold start uses some of those hours just booting up, so it's worth keeping one Codespace alive while you're actively working.  
-* **If you need to work offline,** you can always install VS Code and Git locally instead but it does take some set up — Codespaces is a convenience, not a requirement.
+**How my JavaScript builds the HTML**
+The data lives in an array of objects in `script.js`. The script finds the
+empty container (`#polka-styles`) with `getElementById`, then loops through the
+array with `forEach`. For each mood it creates a card `<div>`, an `<h3>` for the
+name and a `<p>` for the tagline, fills them with `textContent`, and appends the
+h3 and p into the card and the card into the container. I used `forEach` rather
+than a `for` loop because I only need to do the same thing to every item, and
+`forEach` hands me each item directly without managing an index.
