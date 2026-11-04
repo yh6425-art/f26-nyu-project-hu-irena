@@ -77,3 +77,20 @@ than a `for` loop because I only need to do the same thing to every item, and
 
 - How to add interactivity — e.g. making a mood card clickable so it opens that
   look. I'd like to learn the right way to do this with event listeners.
+
+## Weekly Update — Week 7 (CSS Grid Layout)
+
+**Key changes**
+- Turned the page from a single stacked column into a real layout. Made `<main>`
+  a grid for even vertical rhythm, and gridded the sections that are genuinely
+  two-dimensional.
+- "How it works" is three columns on desktop (one media query); "Browse by
+  element" and the Polka Dot moods are auto-fit card grids; the nav is a Flexbox
+  row (logo left, links right).
+
+**Challenges**
+- Remembering the media query must sit below the base rule, and that grid gap
+  replaces the old section margins (otherwise spacing doubles up).
+
+**Next week**
+- Add a second breakpoint and refine spacing/hierarchy against the Style Tile.
