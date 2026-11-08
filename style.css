@@ -133,3 +133,71 @@ a {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+/* ===== Look of the Day(每日活动)===== */
+.look-img {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 12px;
+  display: block;
+  margin: 16px 0;
+}
+
+#spot-feedback {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  color: #640D14;
+  margin: 8px 0 16px;
+}
+
+#aspect-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.aspect-btn {
+  background-color: #FEEAC7;
+  color: #640D14;
+  border: 1px solid #640D14;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.aspect-btn.active {       /* 被点亮的按钮 */
+  background-color: #640D14;
+  color: #FEEAC7;
+}
+
+#aspect-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.aspect-card {
+  background-color: #FEEAC7;
+  border: 1px solid #640D14;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.aspect-card h3 {
+  font-family: 'Ephesis', cursive;
+  font-size: 24px;
+  color: #640D14;
+  margin-bottom: 4px;
+}
+
+.aspect-card p {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  color: #283618;
+}
+
+/* 隐藏状态 —— 这就是 toggle 在控制的那个 class */
+.is-hidden {
+  display: none;
+}

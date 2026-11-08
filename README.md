@@ -8,6 +8,29 @@ element at a time.
 
 Most up-to-date mockups (Figma): [View the mockups](https://www.figma.com/design/UeViHRMMMt485MUjagHG79/Irena_LandingPage?node-id=57-317&t=HFPB6aBDMUlaw7d4-1)
 
+## Project Log
+
+### Week 8 — 2026-11-08
+
+**State Plan**
+
+- **User story:** As a learner building my eye for style, I want to look at a bold runway look and tap the parts that stand out to me — then read why they work — so that I actively practice noticing elements instead of just scrolling past.
+- **What does the page remember?** `spottedCount` — how many standout details the learner has tapped.
+- **What does it start at?** 0 (nothing tapped yet).
+- **What changes it?** Clicking an aspect button (Element mix, Print mixing, Color clash, Statement accessories, Silhouette, Texture play). Tapping adds one; tapping again removes one — multi-select.
+- **What does the user see?** The explanation card for each tapped aspect opens, and a progress line at the top changes with how many they've spotted.
+- **What does the `if/else` decide?** It reads `spottedCount`: all six → "you're reading this like a stylist"; one or more → "nice eye, keep looking"; zero → "tap what stands out to you."
+
+**What changed:** Added a "Look of the Day" page (daily.html + daily.js). It shows a bold runway look and lets the learner tap the parts that stand out; each tap reveals a short "why" card and updates a progress line.
+
+**What was hard, and what I tried:** Getting the cards to start hidden. At first all six showed, because I hadn't written the `.is-hidden { display: none }` rule yet — the class was on the cards but the CSS wasn't acting on it until I added the rule.
+
+**What happened when I tried to break it:** I reloaded (all hidden, prompt shows), toggled each on and off, and clicked all six then rapid-clicked. The count and feedback stayed correct, because each button checks its own card's state before changing spottedCount, so it can't go below 0 or above 6.
+
+**What I learned or changed my mind about:** Changing a variable doesn't change the screen by itself — I also had to toggle a class and update the text. And a class does nothing until there's a CSS rule for it.
+
+**Next week's goal:** Turn the Look of the Day into a rotating daily challenge — store several looks in an array (each with its own image and aspects) so a new one appears each round — and add a light reward for finishing, like a streak or "style points." Also add a **style spotlight card**: once the learner has explored a look, reveal a fun card that names its overall style (e.g. Bohemian) and introduces where it comes from and its history.
+
 ## 📝 Weekly Update
 
 **Key changes this week**
@@ -81,6 +104,7 @@ than a `for` loop because I only need to do the same thing to every item, and
 ## Weekly Update — Week 7 (CSS Grid Layout)
 
 **Key changes**
+
 - Turned the page from a single stacked column into a real layout. Made `<main>`
   a grid for even vertical rhythm, and gridded the sections that are genuinely
   two-dimensional.
@@ -89,8 +113,10 @@ than a `for` loop because I only need to do the same thing to every item, and
   row (logo left, links right).
 
 **Challenges**
+
 - Remembering the media query must sit below the base rule, and that grid gap
   replaces the old section margins (otherwise spacing doubles up).
 
 **Next week**
+
 - Add a second breakpoint and refine spacing/hierarchy against the Style Tile.
