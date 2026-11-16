@@ -9,6 +9,23 @@ element at a time.
 Most up-to-date mockups (Figma): [View the mockups](https://www.figma.com/design/UeViHRMMMt485MUjagHG79/Irena_LandingPage?node-id=57-317&t=HFPB6aBDMUlaw7d4-1)
 
 ## Project Log
+### Week 9 — 2026-11-15
+
+**Render Plan**
+- **User story:** As a learner exploring how one element can carry many styles, I want to tap the polka-dot moods that appeal to me and see which ones I've picked so that I can compare moods actively instead of just reading them.
+- **State:** `selectedMoods`, an array of mood names the learner has picked. It starts as `[]` (nothing selected).
+- **What changes it:** Clicking a mood card. If that mood isn't in `selectedMoods`, it gets added. If it's already in there, it gets removed. Clicking the same card again returns it to unselected.
+- **What render() draws:** The mood cards inside `#polka-styles`, rebuilt from the `polkaDotStyles` array every time the state changes.
+- **The if inside the loop:** For each mood, `if` its name is in `selectedMoods`, the card gets the `selected` class; otherwise it stays plain.
+- **What else render() works out:** A count line such as "2 of 5 moods selected", worked out from `selectedMoods`, not typed in.
+
+**What changed:**
+**Patching vs. rendering:**
+**What was hard, and what I tried:**
+**What happened when I tried to break it:**
+**What I learned or changed my mind about:**
+**Question for Joey:**
+**Next week's goal:**
 
 ### Week 8 — 2026-11-08
 
