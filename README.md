@@ -13,11 +13,11 @@ Most up-to-date mockups (Figma): [View the mockups](https://www.figma.com/design
 
 **Render Plan**
 - **User story:** As a learner exploring how one element can carry many styles, I want to tap the polka-dot moods that appeal to me and see which ones I've picked so that I can compare moods actively instead of just reading them.
-- **State:** `selectedMoods`, an array of mood names the learner has picked. It starts as `[]` (nothing selected).
-- **What changes it:** Clicking a mood card. If that mood isn't in `selectedMoods`, it gets added. If it's already in there, it gets removed. Clicking the same card again returns it to unselected.
-- **What render() draws:** The mood cards inside `#polka-styles`, rebuilt from the `polkaDotStyles` array every time the state changes.
-- **The if inside the loop:** For each mood, `if` its name is in `selectedMoods`, the card gets the `selected` class; otherwise it stays plain.
-- **What else render() works out:** A count line such as "2 of 5 moods selected", worked out from `selectedMoods`, not typed in.
+- **State:** `selectedMood`, the name of the one mood the learner picked. It starts as `null` (nothing picked).
+- **What changes it:** Clicking a mood card sets `selectedMood` to that mood. Clicking the same card again sets it back to `null`.
+- **What render() draws:** The mood cards from `polkaDotStyles`, plus a detail panel under them for the picked mood.
+- **The if inside the loop:** For each mood, `if` it equals `selectedMood`, the card gets the `selected` class.
+- **What else render() works out:** A status line ("Pick a mood to see how it reads" or "Selected: Vintage") and the detail panel's text, both from `selectedMood`.
 
 **What changed:**
 **Patching vs. rendering:**

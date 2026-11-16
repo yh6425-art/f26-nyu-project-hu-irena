@@ -213,3 +213,12 @@ a {
 .mood-card.selected p {
   color: #FEEAC7;
 }
+#mood-detail {
+  margin-top: 16px;
+}
+
+#mood-detail h3 {
+  font-family: 'Ephesis', cursive;
+  font-size: 28px;
+  color: #640D14;
+}

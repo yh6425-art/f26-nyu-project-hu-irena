@@ -1,58 +1,72 @@
-// Polka Dot 的五种风格 —— "一个元素,多种风格" 这块的数据
+// Polka Dot 的五种风格；detail 是点开后看到的更多内容（请改成你自己的话）
 const polkaDotStyles = [
-  { mood: "Elegant / Chic", tagline: "Classic & Refined · Large Dots" },
-  { mood: "Vintage",        tagline: "Retro Romance · Large Dots" },
-  { mood: "Sweet",          tagline: "Mini Dots · Ruffled Trim" },
-  { mood: "Cool / Street",  tagline: "Urban Edge · Bold Dots" },
-  { mood: "Casual",         tagline: "Everyday Comfort · Soft Dots" },
+  { mood: "Elegant / Chic", tagline: "Classic & Refined · Large Dots",
+    detail: "Large dots on a clean cut read polished. (rewrite in your own words)" },
+  { mood: "Vintage",        tagline: "Retro Romance · Large Dots",
+    detail: "Large dots with a retro cut feel like the 1950s. (rewrite)" },
+  { mood: "Sweet",          tagline: "Mini Dots · Ruffled Trim",
+    detail: "Tiny dots plus ruffles feel soft and playful. (rewrite)" },
+  { mood: "Cool / Street",  tagline: "Urban Edge · Bold Dots",
+    detail: "Bold dots against tough pieces feel edgy. (rewrite)" },
+  { mood: "Casual",         tagline: "Everyday Comfort · Soft Dots",
+    detail: "Soft dots on easy fabrics feel relaxed. (rewrite)" },
 ];
 
 const container = document.getElementById("polka-styles");
 const moodCount = document.getElementById("mood-count");
+const moodDetail = document.getElementById("mood-detail");
 
-// selectedMoods: （这行注释请换成你自己的话，说明这个变量记住什么、为什么）
-let selectedMoods = [];
+// selectedMood: （换成你自己的话：它记住什么、为什么）
+let selectedMood = null;
 
-// render: draws the mood cards, highlights the selected ones, and shows the count
+// render: draws the mood cards, highlights the picked one, and shows its detail and a status line
 function render() {
-  // 1. 清空旧卡片，避免重复
   container.innerHTML = "";
+  moodDetail.innerHTML = "";
 
-  // 2. 遍历数组，if 读 state 决定这张卡是否高亮
   polkaDotStyles.forEach(function (style) {
     const card = document.createElement("div");
     card.className = "mood-card";
 
-    if (selectedMoods.includes(style.mood)) {
+    if (style.mood === selectedMood) {
       card.classList.add("selected");
     }
 
     const name = document.createElement("h3");
     name.textContent = style.mood;
-
     const tag = document.createElement("p");
     tag.textContent = style.tagline;
 
     card.appendChild(name);
     card.appendChild(tag);
     container.appendChild(card);
-        card.addEventListener("click", function () {
-      if (selectedMoods.includes(style.mood)) {
-        // 已选中 → 取消选中
-        selectedMoods = selectedMoods.filter(function (m) {
-          return m !== style.mood;
-        });
+
+    card.addEventListener("click", function () {
+      if (selectedMood === style.mood) {
+        selectedMood = null;          // 再点一次 → 取消
       } else {
-        // 没选中 → 加进去
-        selectedMoods.push(style.mood);
+        selectedMood = style.mood;    // 选这一个
       }
-      render(); // 只改 state，然后重画
+      render();
     });
+
+    // 选中的这一张：同时画出详情区
+    if (style.mood === selectedMood) {
+      const dTitle = document.createElement("h3");
+      dTitle.textContent = style.mood;
+      const dText = document.createElement("p");
+      dText.textContent = style.detail;
+      moodDetail.appendChild(dTitle);
+      moodDetail.appendChild(dText);
+    }
   });
 
-  // 3. 计数由 state 算出来，不是手写的
-  moodCount.textContent =
-    selectedMoods.length + " of " + polkaDotStyles.length + " moods selected";
+  // 状态行也由 state 算出来
+  if (selectedMood === null) {
+    moodCount.textContent = "Pick a mood to see how it reads.";
+  } else {
+    moodCount.textContent = "Selected: " + selectedMood;
+  }
 }
 
 render();
