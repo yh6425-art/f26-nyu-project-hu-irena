@@ -1,15 +1,15 @@
-// Polka Dot 的五种风格；detail 是点开后看到的更多内容（请改成你自己的话）
+// Polka Dot 的五种风格；detail 是点开后看到的更多内容
 const polkaDotStyles = [
   { mood: "Elegant / Chic", tagline: "Classic & Refined · Large Dots",
-    detail: "Large dots on a clean cut read polished. (rewrite in your own words)" },
+    detail: "Large dots on a clean cut read polished." },
   { mood: "Vintage",        tagline: "Retro Romance · Large Dots",
-    detail: "Large dots with a retro cut feel like the 1950s. (rewrite)" },
+    detail: "Large dots with a retro cut feel like the 1950s. " },
   { mood: "Sweet",          tagline: "Mini Dots · Ruffled Trim",
-    detail: "Tiny dots plus ruffles feel soft and playful. (rewrite)" },
+    detail: "Tiny dots plus ruffles feel soft and playful." },
   { mood: "Cool / Street",  tagline: "Urban Edge · Bold Dots",
-    detail: "Bold dots against tough pieces feel edgy. (rewrite)" },
+    detail: "Bold dots against tough pieces feel edgy." },
   { mood: "Casual",         tagline: "Everyday Comfort · Soft Dots",
-    detail: "Soft dots on easy fabrics feel relaxed. (rewrite)" },
+    detail: "Soft dots on easy fabrics feel relaxed." },
 ];
 
 const container = document.getElementById("polka-styles");

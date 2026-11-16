@@ -19,13 +19,25 @@ Most up-to-date mockups (Figma): [View the mockups](https://www.figma.com/design
 - **The if inside the loop:** For each mood, `if` it equals `selectedMood`, the card gets the `selected` class.
 - **What else render() works out:** A status line ("Pick a mood to see how it reads" or "Selected: Vintage") and the detail panel's text, both from `selectedMood`.
 
-**What changed:**
-**Patching vs. rendering:**
-**What was hard, and what I tried:**
+**What changed:** I made the Polka Dot mood cards on the homepage interactive. Clicking a card selects that mood. A `render()` function in `script.js` now draws all five cards from my `polkaDotStyles` array, adds the `selected` class to the one that matches `selectedMood`, draws a detail panel for it, and writes a status line ("Pick a mood to see how it reads." or "Selected: Vintage"). I added a `detail` field to each object in the array and a `#mood-detail` container in `index.html`.
+
+**Patching vs. rendering:** In Week 8, my click handler changed the card class, the button class, the counter, and the feedback text one by one, and it even read the page (`classList.contains("is-hidden")`) to figure out what was open. Now the click handler only does two things: it updates `selectedMood` and calls `render()`. Because the highlight, the detail panel, and the status line are all drawn from the same variable each time, they can't disagree with each other.
+
+**What was hard, and what I tried:** My first plan was multi-select with a "3 of 5 moods selected" count, and I built it. When I looked at the result, I realized it didn't match my user story: on the homepage a learner should pick one mood and then read more about it. The multi-select behavior belongs to my Week 8 Look of the Day page. I rewrote the Render Plan to single-select, changed `selectedMoods` (an array) to `selectedMood` (one value, starting at `null`), and moved the extra content into a detail panel. I also got confused about which page I was testing: `daily.html` and `index.html` look similar in the browser, and Safari hides the file name. I fixed it by checking the page title and which script file each page loads.
+
 **What happened when I tried to break it:**
-**What I learned or changed my mind about:**
-**Question for Joey:**
-**Next week's goal:**
+- At the start: the status line said "Pick a mood to see how it reads.", no card was highlighted, and there was no detail panel. [SELECTED]
+- Normal use: I clicked Vintage and only Vintage was highlighted, the detail panel showed Vintage, and the status line said "Selected: Vintage". Clicking another card moved all three together.
+- At the limit: I clicked the same card ten times and ended with [SELECTED or NOT SELECTED] and the status line matched.
+- Random order: I clicked cards in random order and the highlight, detail panel, and status line always agreed. [SELECTED]
+- Console: no red errors.
+
+**What I learned or changed my mind about:** I used to think of the page as something I update after each click. Now I think of it as something I redraw from a variable. It also taught me to check my plan against my user story before coding: my first plan was the wrong interaction for this page.
+
+
+**Next week's goal:** Add the style spotlight card from my Week 8 goal, and put the Look of the Day looks into an array so a new one can appear each round. 
+
+**AI use:** I used Claude to explain the assignment, check my plan, and draft code. I made the interaction decisions (single-select, a detail panel, clicking again to deselect, a status line) and answered Claude's questions about them. 
 
 ### Week 8 — 2026-11-08
 
