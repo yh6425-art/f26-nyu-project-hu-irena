@@ -7,27 +7,52 @@ const polkaDotStyles = [
   { mood: "Casual",         tagline: "Everyday Comfort · Soft Dots" },
 ];
 
-console.log(polkaDotStyles); 
-// 1. 找到页面上那个空容器
 const container = document.getElementById("polka-styles");
+const moodCount = document.getElementById("mood-count");
 
-// 2. 遍历每一种风格,给它造一张卡
-polkaDotStyles.forEach(function (style) {
-  // 造卡片外壳
-  const card = document.createElement("div");
-  card.className = "mood-card";
+// selectedMoods: （这行注释请换成你自己的话，说明这个变量记住什么、为什么）
+let selectedMoods = [];
 
-  // 造风格名 (h3) + 说明 (p),并填入数据
-  const name = document.createElement("h3");
-  name.textContent = style.mood;
+// render: draws the mood cards, highlights the selected ones, and shows the count
+function render() {
+  // 1. 清空旧卡片，避免重复
+  container.innerHTML = "";
 
-  const tag = document.createElement("p");
-  tag.textContent = style.tagline;
+  // 2. 遍历数组，if 读 state 决定这张卡是否高亮
+  polkaDotStyles.forEach(function (style) {
+    const card = document.createElement("div");
+    card.className = "mood-card";
 
-  // 把 h3、p 装进卡片
-  card.appendChild(name);
-  card.appendChild(tag);
+    if (selectedMoods.includes(style.mood)) {
+      card.classList.add("selected");
+    }
 
-  // 把卡片装进容器
-  container.appendChild(card);
-});
+    const name = document.createElement("h3");
+    name.textContent = style.mood;
+
+    const tag = document.createElement("p");
+    tag.textContent = style.tagline;
+
+    card.appendChild(name);
+    card.appendChild(tag);
+    container.appendChild(card);
+        card.addEventListener("click", function () {
+      if (selectedMoods.includes(style.mood)) {
+        // 已选中 → 取消选中
+        selectedMoods = selectedMoods.filter(function (m) {
+          return m !== style.mood;
+        });
+      } else {
+        // 没选中 → 加进去
+        selectedMoods.push(style.mood);
+      }
+      render(); // 只改 state，然后重画
+    });
+  });
+
+  // 3. 计数由 state 算出来，不是手写的
+  moodCount.textContent =
+    selectedMoods.length + " of " + polkaDotStyles.length + " moods selected";
+}
+
+render();

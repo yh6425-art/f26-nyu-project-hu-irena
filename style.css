@@ -201,3 +201,15 @@ a {
 .is-hidden {
   display: none;
 }
+.mood-card {
+  cursor: pointer;
+}
+
+.mood-card.selected {
+  background-color: #640D14;
+}
+
+.mood-card.selected h3,
+.mood-card.selected p {
+  color: #FEEAC7;
+}
