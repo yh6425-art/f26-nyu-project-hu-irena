@@ -12,7 +12,7 @@ Most up-to-date mockups (Figma): [View the mockups](https://www.figma.com/design
 ### Week 9 — 2026-11-15
 
 **Render Plan**
-- **User story:** As a learner exploring how one element can carry many styles, I want to tap the polka-dot moods that appeal to me and see which ones I've picked so that I can compare moods actively instead of just reading them.
+- **User story:** As a learner exploring how one element can carry many styles, I want to tap a polka-dot mood and read more about it so that I can understand how each mood reads instead of just seeing its name.
 - **State:** `selectedMood`, the name of the one mood the learner picked. It starts as `null` (nothing picked).
 - **What changes it:** Clicking a mood card sets `selectedMood` to that mood. Clicking the same card again sets it back to `null`.
 - **What render() draws:** The mood cards from `polkaDotStyles`, plus a detail panel under them for the picked mood.
